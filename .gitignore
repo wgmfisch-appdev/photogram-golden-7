@@ -32,3 +32,4 @@ whitelist.yml
 examples.txt
 grades.yml
 cloud9_plugins.sh
+/appdev/
