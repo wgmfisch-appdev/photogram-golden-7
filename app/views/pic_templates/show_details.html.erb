@@ -5,4 +5,8 @@
   <p>
     <%= @photo_caption %>
   </p>
+  <p>
+    <%= time_ago_in_words(@photo_ago) %>
+  </p>
+  <a href="/photos"> Go Back</a>
 </li>

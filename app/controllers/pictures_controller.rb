@@ -15,6 +15,7 @@ class PicturesController < ApplicationController
     @photo_entry = Photo.find(@photo_id)
     @photo_source = @photo_entry.source
     @photo_caption = @photo_entry.caption
+    @photo_ago = @photo_entry.created_at
     render("pic_templates/show_details.html.erb")
   end
   def edit_photo
