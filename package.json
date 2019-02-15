@@ -1,5 +1,7 @@
 {
   "name": "photogram_golden_seven",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "diff2html-cli": "^2.7.0"
+  }
 }
