@@ -1,5 +1,7 @@
 class PicturesController < ApplicationController
   def index
+    @photo_list = Photo.all
+    
     render("pic_templates/all_photos.html.erb")
   end
   def new_form
@@ -9,6 +11,10 @@ class PicturesController < ApplicationController
     render("pic_templates/create_row.html.erb")
   end
   def show_details
+    @photo_id = params.fetch("photo_id")
+    @photo_entry = Photo.find(@photo_id)
+    @photo_source = @photo_entry.source
+    @photo_caption = @photo_entry.caption
     render("pic_templates/show_details.html.erb")
   end
   def edit_photo
