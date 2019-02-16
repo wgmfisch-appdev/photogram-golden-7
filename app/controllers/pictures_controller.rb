@@ -12,8 +12,7 @@ class PicturesController < ApplicationController
     p.source = params.fetch("the_source")
     p.caption = params.fetch("the_caption")
     p.save
-    
-    render("pic_templates/create_row.html.erb")
+    redirect_to("/photos")
   end
   def show_details
     @photo_id = params.fetch("photo_id")
@@ -24,12 +23,26 @@ class PicturesController < ApplicationController
     render("pic_templates/show_details.html.erb")
   end
   def edit_photo
+    @photo_id = params.fetch("edit_photo_id")
+    @photo_to_edit = Photo.find(@photo_id)
+    @photo_source = @photo_to_edit.source
+    @photo_caption = @photo_to_edit.caption
+    @photo_ago = @photo_to_edit.created_at
     render("pic_templates/edit_photo.html.erb")
   end
   def update_row
-    render("pic_templates/update_row.html.erb")
+    @photo_id = params.fetch("update_photo_id")
+    p = Photo.find(@photo_id)
+    p.source = params.fetch("the_source")
+    p.caption = params.fetch("the_caption")
+    p.save
+    redirect_to("/photos/"+@photo_id)
   end
   def delete_row
-    render("pic_templates/delete_row.html.erb")
+    the_id = params.fetch("delete_photo_id")
+    the_photo = Photo.find(the_id)
+    the_photo.destroy
+    
+    redirect_to("/photos")
   end
 end
