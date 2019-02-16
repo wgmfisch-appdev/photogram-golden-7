@@ -8,6 +8,11 @@ class PicturesController < ApplicationController
     render("pic_templates/new_photo.html.erb")
   end
   def create_row
+    p = Photo.new
+    p.source = params.fetch("the_source")
+    p.caption = params.fetch("the_caption")
+    p.save
+    
     render("pic_templates/create_row.html.erb")
   end
   def show_details
